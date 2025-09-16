@@ -1,0 +1,25 @@
+<div class="relative group" data-menu>
+    <button class="inline-flex items-center gap-2 hover:text-cyan-400"
+            aria-expanded="false" 
+            aria-haspopup="true"
+            aria-label="Industries Menu">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 21V9l7 5V9l7 5V5l4 2v14z"/><path d="M3 21h18"/>
+        </svg>
+        Industries
+        <svg class="h-4 w-4 -mr-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/>
+        </svg>
+    </button>
+    <div class="mega-menu absolute right-0 top-full mt-2 w-[min(95vw,40rem)] invisible opacity-0 translate-y-2 duration-200 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 z-30">
+        <div class="bridge"></div>
+        <div class="rounded-2xl border border-cyan-400/30 bg-black/85 backdrop-blur p-6 shadow-[0_0_20px_rgba(34,211,238,.45)]">
+            <div class="grid gap-4 sm:grid-cols-2 text-sm">
+                <a class="flex items-center gap-2 hover:text-cyan-400" href="#solutions">✈️ Airports</a>
+                <a class="flex items-center gap-2 hover:text-cyan-400" href="#solutions">🏟️ Stadiums</a>
+                <a class="flex items-center gap-2 hover:text-cyan-400" href="#solutions">🎓 Education</a>
+                <a class="flex items-center gap-2 hover:text-cyan-400" href="#solutions">🏥 Healthcare</a>
+            </div>
+        </div>
+    </div>
+</div>

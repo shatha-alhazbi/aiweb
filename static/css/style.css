@@ -1,0 +1,385 @@
+/* ==================================
+   AI LEAD - Main Styles
+   Using your specified color palette and typography
+   ================================== */
+
+/* IMPORT LOCAL FONTS */
+@import url('./fonts/local-fonts.css');
+
+/* OR if the import doesn't work, copy the @font-face rules from static/fonts/local-fonts.css 
+   and paste them here instead of this @import line */
+
+/* CSS Variables - Your Color Palette */
+:root {
+    /* Primary Colors */
+    --silver-gray: #94a3b8;
+    --slate-900: #0f172a;
+    --slate-800: #1e293b;
+    
+    /* Neon Accent Colors */
+    --neon-blue: 34, 211, 238;    /* Cyan */
+    --magenta: 236, 72, 153;      /* Fuchsia/Magenta */
+    --neon-purple: 168, 85, 247;
+    --neon-lime: 132, 204, 22;
+    
+    /* Responsive Breakpoints */
+    --mobile-max: 767px;
+    --tablet-min: 768px;
+    --tablet-max: 1199px;
+    --desktop-min: 1200px;
+}
+
+/* Font Families */
+.font-jura {
+    font-family: 'Jura', sans-serif;
+}
+
+.font-roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.font-inter {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Base Styles */
+body {
+    background: linear-gradient(to bottom, #0a0f1a, #0f172a);
+    color: #e5e7eb;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Glass Effect Components */
+.glass {
+    backdrop-filter: blur(12px);
+    background: linear-gradient(
+        90deg,
+        rgba(var(--neon-blue), 0.14),
+        rgba(var(--magenta), 0.14),
+        rgba(var(--neon-lime), 0.14)
+    );
+    border: 1px solid rgba(var(--neon-blue), 0.25);
+    box-shadow: 0 0 18px rgba(var(--neon-blue), 0.28);
+}
+
+/* Improved glass background for header */
+header .glass {
+    backdrop-filter: blur(12px);
+    background: linear-gradient(90deg, rgba(2, 6, 23, 0.6), rgba(2, 6, 23, 0.55));
+    border: 1px solid rgba(var(--neon-blue), 0.25);
+}
+
+/* Bridge for hover stability */
+.bridge {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -12px;
+    height: 12px;
+    z-index: 10;
+}
+
+/* Neon Glow Effects */
+.glow-cyan {
+    box-shadow: 0 0 0 1px rgba(var(--neon-blue), 0.22),
+                0 0 24px rgba(var(--neon-lime), 0.35);
+}
+
+.glow-soft {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06),
+                0 0 28px rgba(15, 23, 42, 0.65),
+                inset 0 0 20px rgba(15, 23, 42, 0.5);
+}
+
+/* Glowing dots for feature bullets */
+.glow-dot-lime {
+    box-shadow: 0 0 10px rgba(var(--neon-lime), 0.9);
+}
+
+.glow-dot-cyan {
+    box-shadow: 0 0 10px rgba(var(--neon-blue), 0.9);
+}
+
+.glow-dot-purple {
+    box-shadow: 0 0 10px rgba(var(--neon-purple), 0.9);
+}
+
+.glow-dot-fuchsia {
+    box-shadow: 0 0 10px rgba(var(--magenta), 0.9);
+}
+
+/* Button Styles */
+.btn-neon {
+    background-image: linear-gradient(
+        90deg,
+        rgba(var(--neon-blue), 1),
+        rgba(var(--magenta), 1),
+        rgba(var(--neon-purple), 1)
+    );
+    color: #0a0a0a;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    will-change: transform, box-shadow, filter;
+}
+
+.btn-neon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(var(--neon-blue), 0.6),
+                0 0 40px rgba(var(--magenta), 0.45);
+    filter: brightness(1.05);
+}
+
+.btn-neon:active {
+    transform: scale(0.97);
+    box-shadow: 0 0 10px rgba(var(--neon-purple), 0.7),
+                inset 0 0 10px rgba(var(--neon-blue), 0.5);
+    filter: brightness(1);
+}
+
+.btn-neon-ghost {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #d1f1f9;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, filter 0.2s ease;
+    will-change: transform, box-shadow, background, filter;
+}
+
+.btn-neon-ghost.glow {
+    box-shadow: 0 0 0 1px rgba(var(--neon-blue), 0.2),
+                0 0 24px rgba(var(--neon-blue), 0.25);
+}
+
+.btn-neon-ghost:hover {
+    transform: scale(1.05);
+    background: rgba(var(--neon-blue), 0.10);
+    box-shadow: 0 0 16px rgba(var(--neon-blue), 0.35);
+    filter: brightness(1.05);
+}
+
+.btn-neon-ghost:active {
+    transform: scale(0.97);
+    box-shadow: inset 0 0 10px rgba(var(--magenta), 0.45),
+                0 0 6px rgba(var(--magenta), 0.25);
+    filter: none;
+}
+
+/* Navigation Styles */
+header nav a, header nav button {
+    position: relative;
+    border-radius: 8px;
+    padding: 0.25rem 0.5rem;
+    transition: box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+/* Hover effects for navigation */
+header nav .group:hover > a,
+header nav .group:hover > button,
+header nav .group:focus-within > a,
+header nav .group:focus-within > button,
+header nav a.active,
+header nav button.active {
+    background: linear-gradient(
+        to right,
+        rgba(var(--neon-blue), 0.22),
+        rgba(var(--magenta), 0.22)
+    );
+    box-shadow: 0 0 0 1px rgba(var(--neon-blue), 0.25),
+                0 0 14px rgba(var(--neon-blue), 0.25);
+}
+
+header nav a:focus-visible,
+header nav button:focus-visible {
+    outline: 2px solid rgba(var(--neon-blue), 0.6);
+    outline-offset: 2px;
+    border-radius: 10px;
+}
+
+/* Mega Menu Styles */
+.mega-menu {
+    z-index: 30;
+}
+
+/* Hero Section */
+.hero-container {
+    box-shadow: 0 0 0 2px rgba(var(--magenta), 0.4),
+                0 0 40px rgba(var(--neon-blue), 0.35),
+                0 0 80px rgba(var(--neon-purple), 0.25);
+}
+
+/* Value Cards */
+.value-card {
+    transition: all 0.3s ease-out;
+}
+
+.value-card:hover {
+    transform: translateY(-4px) scale(1.02);
+}
+
+.value-icon {
+    transition: colors 0.3s duration;
+}
+
+.value-card:hover .value-icon {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Responsive Design */
+
+/* Mobile Phones: ≤ 767px */
+@media (max-width: 767px) {
+    body {
+        font-size: 16px;
+    }
+    
+    .hero-container .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-container h1 {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+    
+    .hero-container p {
+        font-size: 16px;
+    }
+    
+    .btn-neon, .btn-neon-ghost {
+        padding: 0.75rem 1.5rem;
+        font-size: 16px;
+    }
+    
+    /* Stack value cards on mobile */
+    .value-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    /* Ensure mega menus work on mobile */
+    .mega-menu {
+        position: static;
+        width: 100%;
+        transform: none;
+    }
+    
+    header nav {
+        display: none; /* Will be replaced with mobile menu later */
+    }
+}
+
+/* Tablets: 768px – 1199px */
+@media (min-width: 768px) and (max-width: 1199px) {
+    body {
+        font-size: 16px;
+    }
+    
+    .hero-container h1 {
+        font-size: 32px;
+    }
+    
+    .hero-container p {
+        font-size: 18px;
+    }
+    
+    /* Adjust grid layouts for tablets */
+    .value-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .mega-menu {
+        width: min(90vw, 50rem);
+    }
+}
+
+/* Big Screens: ≥ 1200px */
+@media (min-width: 1200px) {
+    body {
+        font-size: 18px;
+    }
+    
+    .hero-container h1 {
+        font-size: 36px;
+    }
+    
+    .hero-container p {
+        font-size: 20px;
+    }
+    
+    /* Full grid layouts for large screens */
+    .value-cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .mega-menu {
+        width: min(95vw, 52rem);
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .btn-neon, .btn-neon-ghost, .value-card, header nav a, header nav button {
+        transition: none;
+    }
+    
+    .value-card:hover {
+        transform: none;
+    }
+    
+    .btn-neon:hover, .btn-neon-ghost:hover {
+        transform: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .glass {
+        border-width: 2px;
+    }
+    
+    .btn-neon {
+        border: 2px solid currentColor;
+    }
+    
+    .btn-neon-ghost {
+        border-width: 2px;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .glass, .glow-cyan, .glow-fuchsia, .glow-purple, .glow-lime, .glow-soft {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        background: transparent;
+    }
+    
+    .btn-neon, .btn-neon-ghost {
+        background: transparent;
+        color: black;
+        border: 1px solid black;
+    }
+}
+
+.glow-fuchsia {
+    box-shadow: 0 0 0 1px rgba(var(--magenta), 0.22),
+                0 0 24px rgba(var(--magenta), 0.35);
+}
+
+.glow-purple {
+    box-shadow: 0 0 0 1px rgba(var(--neon-purple), 0.22),
+                0 0 24px rgba(var(--neon-purple), 0.35);
+}
+
+.glow-lime {
+    box-shadow: 0 0 0 1px rgba(var(--neon-lime), 0.22),
+                0 0 24px rgba(var(--neon-purple), 0.35);
+}

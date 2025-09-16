@@ -1,0 +1,30 @@
+<!-- Banner with full-width glass nav -->
+<div class="relative">
+    <img src="{{ url_for('serve_image', image_name='banner') }}"
+         class="h-40 md:h-60 w-full object-cover opacity-70" 
+         alt="AI LEAD Banner - Smart Technology Solutions" />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-slate-900"></div>
+
+    <header class="fixed top-0 left-0 right-0 z-40">
+        <div class="glass mx-4 md:mx-6 rounded-2xl">
+            <div class="mx-auto max-w-5xl px-4 md:px-6 py-3 flex items-center justify-between">
+                <!-- Brand -->
+                <a href="{{ url_for('index') }}" class="flex items-center gap-2" aria-label="AI LEAD Home">
+                    <div class="h-8 w-8 rounded-full bg-white text-black grid place-content-center font-bold">AI</div>
+                    <span class="tracking-widest text-sm uppercase font-jura">AI LEAD</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                {% include 'components/navigation.html' %}
+                
+                <!-- Mobile Menu Button (for future mobile menu) -->
+                <button class="md:hidden p-2 text-slate-100" aria-label="Open mobile menu">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="h-16 md:h-[76px]"></div>
+</div>

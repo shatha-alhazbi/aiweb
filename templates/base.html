@@ -1,135 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{% block title %}AI LEAD — Neon Glass (v3){% endblock %}</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root{
-      --cyan: 34,211,238;
-      --fuchsia: 236,72,153;
-      --purple: 168,85,247;
-      --lime: 132,204,22;
-    }
-    body{background:linear-gradient(#0a0f1a,#0f172a);color:#e5e7eb}
-    .glass{backdrop-filter:blur(12px);background:linear-gradient(90deg,rgba(var(--cyan),.14),rgba(var(--fuchsia),.14),rgba(var(--lime),.14));border:1px solid rgba(var(--cyan),.25);box-shadow:0 0 18px rgba(var(--cyan),.28)}
-    .bridge{position:absolute;left:0;right:0;top:-12px;height:12px}
-    /* Neon glow utilities */
-    .glow-cyan{box-shadow:0 0 0 1px rgba(var(--cyan),.22),0 0 24px rgba(var(--cyan),.35)}
-    .glow-fuchsia{box-shadow:0 0 0 1px rgba(var(--fuchsia),.22),0 0 24px rgba(var(--fuchsia),.35)}
-    .glow-purple{box-shadow:0 0 0 1px rgba(var(--purple),.22),0 0 24px rgba(var(--purple),.35)}
-    .glow-lime{box-shadow:0 0 0 1px rgba(var(--lime),.22),0 0 24px rgba(var(--lime),.35)}
-    .glow-soft{box-shadow:0 0 0 1px rgba(255,255,255,.06),0 0 28px rgba(15,23,42,.65), inset 0 0 20px rgba(15,23,42,.5)}
-    .btn-neon{background-image:linear-gradient(90deg,rgba(var(--cyan),1),rgba(var(--fuchsia),1),rgba(var(--purple),1));color:#0a0a0a;font-weight:800;letter-spacing:.02em}
-    .btn-neon-ghost{background:rgba(15,23,42,.6);border:1px solid rgba(255,255,255,.18);color:#d1f1f9}
-    .btn-neon-ghost.glow{box-shadow:0 0 0 1px rgba(var(--cyan),.2),0 0 24px rgba(var(--cyan),.25)}
-  </style>
-
-  <style>
-    /* Active or hovered menu item gets neon highlight */
-    nav a.active, nav button.active {
-      background: linear-gradient(to right, rgba(34,211,238,0.25), rgba(236,72,153,0.25));
-      border-radius: 6px;
-      box-shadow: 0 0 12px rgba(34,211,238,0.35);
-      padding: 0.25rem 0.5rem;
-    }
-  </style>
-
-  <style>
-    /* Sticky header glass background to improve readability */
-    header .glass { backdrop-filter: blur(12px); background: linear-gradient(90deg, rgba(2,6,23,.6), rgba(2,6,23,.55)); border: 1px solid rgba(34,211,238,.25); }
-    /* Neon highlight for menu items on hover or when active */
-    header nav a, header nav button { position: relative; border-radius: 8px; }
-    header nav a:hover, header nav button:hover,
-    header nav a.active, header nav button.active {
-      background: linear-gradient(to right, rgba(34,211,238,0.22), rgba(236,72,153,0.22));
-      box-shadow: 0 0 0 1px rgba(34,211,238,.25), 0 0 14px rgba(34,211,238,.25);
-      padding: 0.25rem 0.5rem;
-    }
-  </style>
-
-  <style>
-    /* --- Mega menu hover stability & highlight persistence --- */
-    /* Normalize base padding so hover doesn't shift/tremble */
-    header nav a, header nav button {
-      position: relative;
-      border-radius: 8px;
-      padding: 0.25rem 0.5rem; /* base padding (same on hover) */
-      transition: box-shadow .2s ease, background .2s ease, color .2s ease;
-    }
-    /* Keep highlight while hovering anywhere over the menu group (including submenu) */
-    header nav .group:hover > a,
-    header nav .group:hover > button,
-    header nav .group:focus-within > a,
-    header nav .group:focus-within > button {
-      background: linear-gradient(to right, rgba(34,211,238,0.22), rgba(236,72,153,0.22));
-      box-shadow: 0 0 0 1px rgba(34,211,238,.25), 0 0 14px rgba(34,211,238,.25);
-    }
-    /* Also highlight when explicitly marked active */
-    header nav a.active, header nav button.active {
-      background: linear-gradient(to right, rgba(34,211,238,0.22), rgba(236,72,153,0.22));
-      box-shadow: 0 0 0 1px rgba(34,211,238,.25), 0 0 14px rgba(34,211,238,.25);
-    }
-    /* Optional: subtle outline to reduce perceived jump on focus */
-    header nav a:focus-visible, header nav button:focus-visible {
-      outline: 2px solid rgba(34,211,238,.6);
-      outline-offset: 2px;
-      border-radius: 10px;
-    }
-  </style>
-
-  <style>
-    /* Neon buttons: hover + press interactions */
-    .btn-neon, .btn-neon-ghost {
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, filter .2s ease;
-      will-change: transform, box-shadow, background, filter;
-    }
-    .btn-neon:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(34,211,238,.6), 0 0 40px rgba(236,72,153,.45);
-      filter: brightness(1.05);
-    }
-    .btn-neon:active {
-      transform: scale(0.97);
-      box-shadow: 0 0 10px rgba(168,85,247,.7), inset 0 0 10px rgba(34,211,238,.5);
-      filter: brightness(1);
-    }
-    .btn-neon-ghost:hover {
-      transform: scale(1.05);
-      background: rgba(34,211,238,0.10);
-      box-shadow: 0 0 16px rgba(34,211,238,.35);
-      filter: brightness(1.05);
-    }
-    .btn-neon-ghost:active {
-      transform: scale(0.97);
-      box-shadow: inset 0 0 10px rgba(236,72,153,.45), 0 0 6px rgba(236,72,153,.25);
-      filter: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Dynamic title -->
+    <title>{% block title %}AI LEAD – Smart Technologies & Solutions{% endblock %}</title>
+    
+    <!-- Meta tags -->
+    <meta name="description" content="{% block description %}AI LEAD provides cutting-edge expertise in Electrical Infrastructure, ICT Systems, Smart City Solutions, Energy, and AI/ML integration.{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}AI, smart city, electrical infrastructure, ICT systems, energy solutions, AI/ML integration{% endblock %}">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Local CSS (includes local fonts) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Additional CSS for specific pages -->
+    {% block extra_css %}{% endblock %}
 </head>
+
 <body class="text-slate-100">
-  {% block content %}{% endblock %}
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
-
-  <script>
-    // Ensure there's an invisible bridge so moving from button to panel doesn't close it
-    document.querySelectorAll('[data-menu-panel]').forEach(function(panel){
-      if (!panel.querySelector('.hover-bridge')) {
-        var bridge = document.createElement('div');
-        bridge.className = 'hover-bridge';
-        bridge.style.position = 'absolute';
-        bridge.style.left = 0;
-        bridge.style.right = 0;
-        bridge.style.top = '-10px';
-        bridge.style.height = '10px';
-        bridge.style.pointerEvents = 'auto';
-        panel.insertBefore(bridge, panel.firstChild);
-      }
-    });
-  </script>
+    <!-- Header Component -->
+    {% include 'components/header.html' %}
+    
+    <!-- Main Content -->
+    <main id="main">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Footer Component -->
+    {% include 'components/footer.html' %}
+    
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    <!-- Additional JS for specific pages -->
+    {% block extra_js %}{% endblock %}
 </body>
 </html>
