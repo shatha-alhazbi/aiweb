@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <!-- Banner with full-width glass nav -->
+  <div class="relative">
+    <img src="{{ url_for_image('banner.jpg') }}"
+         class="h-40 md:h-60 w-full object-cover opacity-70" alt="banner"
+         onerror="this.src='https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2400&auto=format&fit=crop'"/>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-slate-900"></div>
+
+    <header class="fixed top-0 left-0 right-0 z-40">
+      <div class="glass mx-4 md:mx-6 rounded-2xl">
+        <div class="mx-auto max-w-5xl px-4 md:px-6 py-3 flex items-center justify-between">
+          <!-- LEFT: Brand -->
+          <a href="#home" class="flex items-center gap-2">
+            <div class="h-8 w-8 rounded-full bg-white text-black grid place-content-center font-bold">AI</div>
+            <span class="tracking-widest text-sm uppercase">AI LEAD</span>
+          </a>
+
+          <!-- RIGHT: Mega menu with icons + neon contact -->
+          <nav class="hidden md:flex items-center gap-7 text-sm font-semibold">
+            <a href="#home" class="hover:text-cyan-400 inline-flex items-center gap-2">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M9 21V10h6v11"/></svg>
+              Home
+            </a>
+
+            <!-- Solutions mega -->
+            <div class="relative group" data-menu>
+              <button class="inline-flex items-center gap-2 hover:text-fuchsia-400" aria-expanded="false">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg>
+                Solutions
+                <svg class="h-4 w-4 -mr-1" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
+              </button>
+              <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[min(95vw,52rem)] invisible opacity-0 translate-y-2 duration-200 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 z-30">
+                <div class="bridge"></div>
+                <div class="rounded-2xl border border-fuchsia-400/30 bg-black/85 backdrop-blur p-6 shadow-[0_0_20px_rgba(236,72,153,.45)]">
+                  <div class="grid gap-6 md:grid-cols-3 text-sm">
+                    <div>
+                      <h4 class="text-fuchsia-300 text-xs uppercase tracking-wider flex items-center gap-2">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg>
+                        Electrical & Energy
+                      </h4>
+                      <ul class="mt-3 space-y-2">
+                        <li><a class="flex items-center gap-2 hover:text-fuchsia-400" href="#solutions"><span>⚡</span>Substations</a></li>
+                        <li><a class="flex items-center gap-2 hover:text-fuchsia-400" href="#solutions"><span>🔌</span>MV/LV Distribution</a></li>
+                        <li><a class="flex items-center gap-2 hover:text-fuchsia-400" href="#solutions"><span>☀️</span>Solar & Storage</a></li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 class="text-cyan-300 text-xs uppercase tracking-wider flex items-center gap-2">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        ICT & Security
+                      </h4>
+                      <ul class="mt-3 space-y-2">
+                        <li><a class="flex items-center gap-2 hover:text-cyan-400" href="#solutions"><span>🌐</span>Data Networks</a></li>
+                        <li><a class="flex items-center gap-2 hover:text-cyan-400" href="#solutions"><span>📹</span>CCTV / VMS</a></li>
+                        <li><a class="flex items-center gap-2 hover:text-cyan-400" href="#solutions"><span>🛂</span>Access Control</a></li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 class="text-lime-300 text-xs uppercase tracking-wider flex items-center gap-2">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+                        AI / Analytics
+                      </h4>
+                      <ul class="mt-3 space-y-2">
+                        <li><a class="flex items-center gap-2 hover:text-lime-400" href="#solutions"><span>📊</span>Dashboards</a></li>
+                        <li><a class="flex items-center gap-2 hover:text-lime-400" href="#solutions"><span>🖼️</span>Computer Vision</a></li>
+                        <li><a class="flex items-center gap-2 hover:text-lime-400" href="#solutions"><span>🔮</span>Predictive Maintenance</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Industries mega (icons) -->
+            <div class="relative group" data-menu>
+              <button class="inline-flex items-center gap-2 hover:text-cyan-400">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21V9l7 5V9l7 5V5l4 2v14z"/><path d="M3 21h18"/></svg>
+                Industries
+                <svg class="h-4 w-4 -mr-1" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
+              </button>
+              <div class="absolute right-0 top-full mt-2 w-[min(95vw,40rem)] invisible opacity-0 translate-y-2 duration-200 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 z-30">
+                <div class="bridge"></div>
+                <div class="rounded-2xl border border-cyan-400/30 bg-black/85 backdrop-blur p-6 shadow-[0_0_20px_rgba(34,211,238,.45)]">
+                  <div class="grid gap-4 sm:grid-cols-2 text-sm">
+                    <a class="flex items-center gap-2 hover:text-cyan-400" href="#solutions">✈️ Airports</a>
+                    <a class="flex items-center gap-2 hover:text-cyan-400" href="#solutions">🏟️ Stadiums</a>
+                    <a class="flex items-center gap-2 hover:text-cyan-400" href="#solutions">🎓 Education</a>
+                    <a class="flex items-center gap-2 hover:text-cyan-400" href="#solutions">🏥 Healthcare</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a href="#values" class="hover:text-lime-400 inline-flex items-center gap-2">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 22l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+              Values
+            </a>
+
+            <a href="#contact" class="btn-neon rounded-lg px-3 py-1.5 glow-cyan">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+  <div class="h-16 md:h-[76px]"></div>
+  </div>
+
+  <!-- HERO (screenshot-style split, neon text, buttons) -->
+  <section class="mx-auto max-w-6xl px-4 md:px-6 -mt-6 md:-mt-8">
+    <div class="rounded-[28px] bg-slate-900/50 backdrop-blur overflow-hidden glow-soft p-3 md:p-4" style="box-shadow:0 0 0 2px rgba(236,72,153,.4),0 0 40px rgba(34,211,238,.35),0 0 80px rgba(168,85,247,.25)">
+      <div class="grid md:grid-cols-2 gap-0">
+        <!-- Left image -->
+        <div class="relative">
+          <img src="{{ url_for_image('workspace.jpg') }}"
+               class="h-[350px] md:h-[500px] w-full object-cover rounded-[22px]" alt="workspace"
+               onerror="this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop'"/>
+          <div class="absolute inset-0 rounded-[22px] bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/40"></div>
+        </div>
+        <!-- Right content -->
+        <div class="p-6 md:p-10">
+          <h1 class="font-extrabold leading-tight text-[36px] md:text-[36px] tracking-wide">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-fuchsia-300 to-purple-300">SMART TECHNOLOGIES</span><br/>
+            <span class="text-cyan-200">&</span><br/>
+            <span class="text-purple-300">SMART SOLUTIONS</span><br/>
+          </h1>
+          <p class="mt-4 text-slate-300/95 text-lg md:text-xl leading-relaxed">
+            AI LEAD provides cutting-edge expertise in design, solutions, and services across
+            Electrical Infrastructure, ICT Systems, Smart City Solutions, Energy, and AI/ML integration.
+          </p>
+
+          <!-- Bullets -->
+          <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-200">
+            <div class="flex items-center gap-3"><span class="h-3 w-3 rounded-full bg-lime-400 shadow-[0_0_10px_rgba(132,204,22,.9)]"></span>Critical Infrastructure</div>
+            <div class="flex items-center gap-3"><span class="h-3 w-3 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,.9)]"></span>Smart City Projects</div>
+            <div class="flex items-center gap-3"><span class="h-3 w-3 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,.9)]"></span>Security & Automation</div>
+            <div class="flex items-center gap-3"><span class="h-3 w-3 rounded-full bg-fuchsia-400 shadow-[0_0_10px_rgba(236,72,153,.9)]"></span>AI/ML Integration</div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="mt-8 flex items-center gap-4">
+            <a href="#solutions" class="btn-neon glow-cyan inline-block rounded-2xl px-6 py-3 text-lg">Explore Solutions</a>
+            <a href="#contact" class="btn-neon-ghost glow inline-block rounded-2xl px-6 py-3 text-lg">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values (neon glow on cards) -->
+  <section id="values" class="mx-auto max-w-5xl px-6 lg:px-8 my-12">
+    <h2 class="text-center text-xl md:text-2xl font-bold">Our System of Values</h2>
+    <p class="text-center text-slate-400 text-sm">Quality • Reliability • Innovation • Partnership</p>
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <article class="group rounded-2xl border border-cyan-400/25 bg-slate-900/60 p-6 glow-cyan transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]">
+        <div class="h-8 w-8 rounded-full bg-white text-slate-900 grid place-content-center text-xs font-bold transition-colors duration-300 group-hover:bg-cyan-400 group-hover:text-slate-900">Q</div>
+        <h3 class="mt-3 font-semibold">Quality</h3>
+        <p class="mt-1 text-sm text-slate-300">Rigorous processes and certified procedures for consistent, reliable outcomes and measurable performance.</p>
+      </article>
+      <article class="group rounded-2xl border border-fuchsia-400/25 bg-slate-900/60 p-6 glow-fuchsia transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]">
+        <div class="h-8 w-8 rounded-full bg-white text-slate-900 grid place-content-center text-xs font-bold transition-colors duration-300 group-hover:bg-fuchsia-400 group-hover:text-slate-900">R</div>
+        <h3 class="mt-3 font-semibold">Reliability</h3>
+        <p class="mt-1 text-sm text-slate-300">Decades of project experience, transparent delivery, and on-call support so clients can depend on us.</p>
+      </article>
+      <article class="group rounded-2xl border border-purple-400/25 bg-slate-900/60 p-6 glow-purple transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]">
+        <div class="h-8 w-8 rounded-full bg-white text-slate-900 grid place-content-center text-xs font-bold transition-colors duration-300 group-hover:bg-purple-400 group-hover:text-slate-900">I</div>
+        <h3 class="mt-3 font-semibold">Innovation</h3>
+        <p class="mt-1 text-sm text-slate-300">We bring modern technology to real problems—cloud, IoT, data analytics, and AI for sustainable impact.</p>
+      </article>
+      <article class="group rounded-2xl border border-lime-400/25 bg-slate-900/60 p-6 glow-lime transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]">
+        <div class="h-8 w-8 rounded-full bg-white text-slate-900 grid place-content-center text-xs font-bold transition-colors duration-300 group-hover:bg-lime-400 group-hover:text-slate-900">P</div>
+        <h3 class="mt-3 font-semibold">Partnership</h3>
+        <p class="mt-1 text-sm text-slate-300">We collaborate closely with clients and suppliers to co-create solutions and share success.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA strip with neon button -->
+  <section class="mx-auto max-w-5xl px-6 lg:px-8">
+    <div class="rounded-2xl border border-white/10 bg-gradient-to-r from-slate-900/70 to-slate-800/70 p-6 glow-soft">
+      <div class="grid md:grid-cols-3 gap-4 items-center">
+        <div class="md:col-span-2">
+          <h3 class="text-lg md:text-xl font-semibold">AI LEAD helps our customers find the right solutions.</h3>
+          <ul class="mt-2 text-sm text-slate-300 space-y-1 list-disc pl-5">
+            <li>Innovation and pragmatic engineering that fits budget, schedule, and context.</li>
+            <li>Partnered solutions with top-tier vendors and domain experts.</li>
+            <li>Latest technologies applied responsibly for long-term value.</li>
+          </ul>
+        </div>
+        <div class="text-left md:text-right">
+          <a href="#contact" class="btn-neon inline-block rounded-xl px-4 py-2 glow-cyan">Contact AI LEAD</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About (3 cards) with glow -->
+  <section class="mx-auto max-w-5xl px-6 lg:px-8 my-12">
+    <h2 class="text-xl md:text-2xl font-bold">AI LEAD — Partner with a Shared Vision</h2>
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <article class="rounded-2xl border border-cyan-400/20 bg-slate-900/60 p-6 glow-cyan">
+        <h3 class="font-semibold">Mission</h3>
+        <p class="mt-2 text-sm text-slate-300">Deliver superior services with excellence, transparency, and respect—earning long‑term trust and measurable performance.</p>
+      </article>
+      <article class="rounded-2xl border border-fuchsia-400/20 bg-slate-900/60 p-6 glow-fuchsia">
+        <h3 class="font-semibold">Values</h3>
+        <ul class="mt-2 text-sm text-slate-300 space-y-1 list-disc pl-5">
+          <li>Always maintain our ethics and respect.</li>
+          <li>Partnership and dialogue as the right way of working.</li>
+          <li>Continuous learning and improvement.</li>
+        </ul>
+      </article>
+      <article class="rounded-2xl border border-purple-400/20 bg-slate-900/60 p-6 glow-purple">
+        <h3 class="font-semibold">Goals</h3>
+        <ul class="mt-2 text-sm text-slate-300 space-y-1 list-disc pl-5">
+          <li>Listen to our customers and exceed expectations.</li>
+          <li>Deliver repeatable, high‑quality work.</li>
+          <li>Empower our people to do their best work.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="border-t border-white/10 py-6 text-slate-300">
+    <div class="mx-auto max-w-5xl px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <p>Email: contact@ailead.example • Phone: +974 0000 0000</p>
+      <p>© <span id="y">{{ current_year }}</span> AI LEAD</p>
+    </div>
+  </footer>
+{% endblock %}
