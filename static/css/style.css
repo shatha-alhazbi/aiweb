@@ -3,11 +3,120 @@
    Using your specified color palette and typography
    ================================== */
 
-/* IMPORT LOCAL FONTS */
-@import url('./fonts/local-fonts.css');
+/* DIRECT FONT LOADING - This should work better */
+@font-face {
+    font-family: 'Jura';
+    src: url('../fonts/Jura-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
 
-/* OR if the import doesn't work, copy the @font-face rules from static/fonts/local-fonts.css 
-   and paste them here instead of this @import line */
+@font-face {
+    font-family: 'Jura';
+    src: url('../fonts/Jura-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Jura';
+    src: url('../fonts/Jura-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Jura';
+    src: url('../fonts/Jura-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Jura';
+    src: url('../fonts/Jura-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Roboto Font */
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Inter Font */
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
 
 /* CSS Variables - Your Color Palette */
 :root {
@@ -208,6 +317,22 @@ header nav button:focus-visible {
     box-shadow: 0 0 0 2px rgba(var(--magenta), 0.4),
                 0 0 40px rgba(var(--neon-blue), 0.35),
                 0 0 80px rgba(var(--neon-purple), 0.25);
+}
+
+/* Hero Title - Ensure proper line breaks */
+.hero-container h1 {
+    white-space: nowrap;
+}
+
+.hero-container h1 br {
+    display: block;
+}
+
+/* On smaller screens, allow text wrapping if needed */
+@media (max-width: 640px) {
+    .hero-container h1 {
+        white-space: normal;
+    }
 }
 
 /* Value Cards */
