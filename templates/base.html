@@ -4,39 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- Dynamic title -->
-    <title>{% block title %}AI LEAD – Smart Technologies & Solutions{% endblock %}</title>
+    <title>{% block title %}{{ site.company_name }} – {{ site.tagline }}{% endblock %}</title>
     
-    <!-- Meta tags -->
     <meta name="description" content="{% block description %}AI LEAD provides cutting-edge expertise in Electrical Infrastructure, ICT Systems, Smart City Solutions, Energy, and AI/ML integration.{% endblock %}">
-    <meta name="keywords" content="{% block keywords %}AI, smart city, electrical infrastructure, ICT systems, energy solutions, AI/ML integration{% endblock %}">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Local CSS (includes local fonts) -->
+    <!-- Configure Tailwind with your custom colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-cyan': 'rgb(34, 211, 238)',
+                        'neon-fuchsia': 'rgb(236, 72, 153)',
+                        'neon-purple': 'rgb(168, 85, 247)',
+                        'neon-lime': 'rgb(132, 204, 22)',
+                    },
+                    fontFamily: {
+                        'jura': ['Jura', 'sans-serif'],
+                        'roboto': ['Roboto', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Minimal custom CSS for complex effects Tailwind can't handle -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     
-    <!-- Additional CSS for specific pages -->
     {% block extra_css %}{% endblock %}
 </head>
 
-<body class="text-slate-100">
-    <!-- Header Component -->
+<body class="text-slate-100 font-inter" style="background: linear-gradient(#0a0f1a, #0f172a);">
     {% include 'components/header.html' %}
     
-    <!-- Main Content -->
     <main id="main">
         {% block content %}{% endblock %}
     </main>
     
-    <!-- Footer Component -->
     {% include 'components/footer.html' %}
     
-    <!-- JavaScript -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    
-    <!-- Additional JS for specific pages -->
     {% block extra_js %}{% endblock %}
 </body>
 </html>
