@@ -46,6 +46,13 @@ def about():
     return render_template('about.html', 
                          images=app.config['IMAGES'],
                          site=app.config['SITE_CONFIG'])
+@app.route('/contact')
+def contact():
+    """Contact Us page"""
+    return render_template('contact.html', 
+                         images=app.config['IMAGES'],
+                         site=app.config['SITE_CONFIG'])
+
 
 @app.route('/api/images')
 def api_images():
