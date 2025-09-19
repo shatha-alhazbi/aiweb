@@ -40,6 +40,12 @@ def index():
     return render_template('index.html', 
                          images=app.config['IMAGES'],
                          site=app.config['SITE_CONFIG'])
+@app.route('/about')
+def about():
+    """About Us page"""
+    return render_template('about.html', 
+                         images=app.config['IMAGES'],
+                         site=app.config['SITE_CONFIG'])
 
 @app.route('/api/images')
 def api_images():
