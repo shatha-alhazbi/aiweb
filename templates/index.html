@@ -1,143 +1,202 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- HERO Section -->
+<!-- HERO Section (Scale.com style) -->
 <section class="mx-auto max-w-6xl px-4 md:px-6 -mt-6 md:-mt-8">
     <div class="hero-glow rounded-[28px] bg-slate-900/50 backdrop-blur overflow-hidden p-3 md:p-4">
         <div class="grid md:grid-cols-2 gap-0">
-            <!-- Left image -->
-            <div class="relative">
-                <img src="{{ url_for('serve_image', image_name='workspace') }}"
-                     class="h-[350px] md:h-[500px] w-full object-cover rounded-[22px]" 
-                     alt="Modern workspace showing smart technology solutions" />
-                <div class="absolute inset-0 rounded-[22px] bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/40"></div>
-            </div>
-            
-            <!-- Right content -->
-            <div class="p-6 md:p-10">
-                <h1 class="font-jura font-extrabold leading-tight text-[28px] sm:text-[32px] md:text-[36px] tracking-wide">
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-fuchsia-300 to-purple-300 whitespace-nowrap">SMART TECHNOLOGIES</span><br/>
+            <!-- Left - Main Content (where image used to be) -->
+            <div class="p-6 md:p-10 flex flex-col justify-center">
+                <h1 class="font-jura font-extrabold leading-tight text-[28px] sm:text-[32px] md:text-[36px] tracking-wide mb-6">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-fuchsia-300 to-purple-300">SMART TECHNOLOGIES</span><br/>
                     <span class="text-cyan-200">&</span><br/>
-                    <span class="text-purple-300">SMART SOLUTIONS</span><br/>
+                    <span class="text-purple-300">SMART SOLUTIONS</span>
                 </h1>
                 
-                <p class="mt-4 text-slate-300/95 text-lg md:text-xl leading-relaxed">
-                    AI LEAD provides cutting-edge expertise in design, solutions, and services across
-                    Electrical Infrastructure, ICT Systems, Smart City Solutions, Energy, and AI/ML integration.
+                <!-- Tagline -->
+                <p class="text-lg md:text-xl text-slate-300 font-inter mb-8">
+                    Smart Cities · AI & ML · IoT · Holography · Smart Houses · Defence
                 </p>
 
-                <!-- Feature bullets -->
-                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-200">
-                    <div class="flex items-center gap-3">
-                        <span class="h-3 w-3 rounded-full bg-neon-lime shadow-[0_0_10px_rgba(132,204,22,.9)]"></span>
-                        Critical Infrastructure
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="h-3 w-3 rounded-full bg-neon-cyan shadow-[0_0_10px_rgba(34,211,238,.9)]"></span>
-                        Smart City Projects
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="h-3 w-3 rounded-full bg-neon-purple shadow-[0_0_10px_rgba(168,85,247,.9)]"></span>
-                        Security & Automation
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="h-3 w-3 rounded-full bg-neon-fuchsia shadow-[0_0_10px_rgba(236,72,153,.9)]"></span>
-                        AI/ML Integration
-                    </div>
-                </div>
-
                 <!-- Buttons -->
-                <div class="mt-8 flex items-center gap-4">
-                    <a href="#solutions" class="btn-neon glow-cyan rounded-2xl px-6 py-3 text-lg transition-all duration-200">
+                <div class="flex flex-col sm:flex-row items-start gap-4">
+                    <a href="#solutions" class="btn-neon glow-cyan rounded-2xl px-6 py-3 text-lg transition-all duration-200 font-inter">
                         Explore Solutions
                     </a>
-                    <a href="#contact" class="btn-neon-ghost glow rounded-2xl px-6 py-3 text-lg transition-all duration-200">
-                        Get Started
+                    <a href="/about" class="btn-neon-ghost glow rounded-2xl px-6 py-3 text-lg transition-all duration-200 font-inter">
+                        Learn More
                     </a>
+                </div>
+            </div>
+            
+            <!-- Right - Visual space (where we'll add visual later) -->
+            <div class="relative flex items-center justify-center p-6 md:p-10">
+                <div class="w-full h-64 md:h-80 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-700/30 border border-slate-600/30 flex items-center justify-center">
+                    <p class="text-slate-500 font-inter text-sm">Visual Coming Soon</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Values Section -->
-<section id="values" class="mx-auto max-w-5xl px-6 lg:px-8 my-12">
-    <div class="text-center mb-8">
-        <h2 class="text-xl md:text-2xl font-bold font-jura">Our System of Values</h2>
-        <p class="text-slate-400 text-sm">Quality • Reliability • Innovation • Partnership</p>
+<!-- Featured Solutions Section -->
+<section id="solutions" class="mx-auto max-w-6xl px-4 md:px-6 py-16">
+    <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold font-jura mb-4">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-fuchsia-300 to-purple-300">Featured Solutions</span>
+        </h2>
+        <p class="text-lg text-slate-400 font-inter max-w-3xl mx-auto">
+            Comprehensive technology solutions spanning multiple cutting-edge domains
+        </p>
     </div>
     
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <article class="group rounded-2xl border border-cyan-400/25 bg-slate-900/60 p-6 glow-cyan transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]">
-        <div class="h-8 w-8 rounded-full bg-white text-slate-900 flex items-center justify-center text-xs font-bold transition-colors duration-300 group-hover:bg-cyan-400 group-hover:text-slate-900">Q</div>            
-        <p class="mt-1 text-sm text-slate-300 font-roboto">Rigorous processes and certified procedures for consistent, reliable outcomes and measurable performance.</p>
-        </article>
-        
-        <article class="group rounded-2xl border border-fuchsia-400/25 bg-slate-900/60 p-6 glow-fuchsia transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]">
-            <div class="h-8 w-8 rounded-full bg-white text-slate-900 flex items-center justify-center text-xs font-bold transition-colors duration-300 group-hover:bg-neon-fuchsia group-hover:text-slate-900">R</div>
-            <h3 class="mt-3 font-semibold font-jura">Reliability</h3>
-            <p class="mt-1 text-sm text-slate-300 font-roboto">Decades of project experience, transparent delivery, and on-call support so clients can depend on us.</p>
-        </article>
-        
-        <article class="group rounded-2xl border border-purple-400/25 bg-slate-900/60 p-6 glow-purple transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]">
-            <div class="h-8 w-8 rounded-full bg-white text-slate-900 flex items-center justify-center text-xs font-bold transition-colors duration-300 group-hover:bg-neon-purple group-hover:text-slate-900">I</div>
-            <h3 class="mt-3 font-semibold font-jura">Innovation</h3>
-            <p class="mt-1 text-sm text-slate-300 font-roboto">We bring modern technology to real problems—cloud, IoT, data analytics, and AI for sustainable impact.</p>
-        </article>
-        
-        <article class="group rounded-2xl border border-lime-400/25 bg-slate-900/60 p-6 glow-lime transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]">
-            <div class="h-8 w-8 rounded-full bg-white text-slate-900 flex items-center justify-center text-xs font-bold transition-colors duration-300 group-hover:bg-neon-lime group-hover:text-slate-900">P</div>
-            <h3 class="mt-3 font-semibold font-jura">Partnership</h3>
-            <p class="mt-1 text-sm text-slate-300 font-roboto">We collaborate closely with clients and suppliers to co-create solutions and share success.</p>
-        </article>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Smart Cities Card -->
+        <div class="group rounded-2xl border border-cyan-400/25 bg-slate-900/60 p-6 glow-cyan transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.02]">
+            <div class="w-12 h-12 rounded-full bg-cyan-400/20 flex items-center justify-center mb-4 group-hover:bg-cyan-400/30 transition-colors duration-300">
+                <svg class="w-6 h-6 text-neon-cyan" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-neon-cyan font-jura">Smart Cities</h3>
+            <p class="text-slate-400 text-sm font-inter mb-4">Intelligent transport systems, e-mobility solutions, waste management, and smart building technologies for modern urban environments.</p>
+            <ul class="text-xs text-slate-500 space-y-1 font-roboto">
+                <li>• Intelligent Transport Systems</li>
+                <li>• e-Mobility Infrastructure</li>
+                <li>• Smart Waste Management</li>
+            </ul>
+        </div>
+
+        <!-- AI & ML Card -->
+        <div class="group rounded-2xl border border-fuchsia-400/25 bg-slate-900/60 p-6 glow-fuchsia transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.02]">
+            <div class="w-12 h-12 rounded-full bg-fuchsia-400/20 flex items-center justify-center mb-4 group-hover:bg-fuchsia-400/30 transition-colors duration-300">
+                <svg class="w-6 h-6 text-neon-fuchsia" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-neon-fuchsia font-jura">AI & Machine Learning</h3>
+            <p class="text-slate-400 text-sm font-inter mb-4">Advanced predictive analytics, computer vision, natural language processing, and generative AI solutions for intelligent automation.</p>
+            <ul class="text-xs text-slate-500 space-y-1 font-roboto">
+                <li>• Predictive Analytics</li>
+                <li>• Computer Vision Systems</li>
+                <li>• NLP & Generative AI</li>
+            </ul>
+        </div>
+
+        <!-- Smart Houses Card -->
+        <div class="group rounded-2xl border border-purple-400/25 bg-slate-900/60 p-6 glow-purple transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.02]">
+            <div class="w-12 h-12 rounded-full bg-purple-400/20 flex items-center justify-center mb-4 group-hover:bg-purple-400/30 transition-colors duration-300">
+                <svg class="w-6 h-6 text-neon-purple" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-neon-purple font-jura">Smart Houses</h3>
+            <p class="text-slate-400 text-sm font-inter mb-4">Luxury home automation, energy management, AI-driven IoT hubs, and premium security systems for sophisticated living experiences.</p>
+            <ul class="text-xs text-slate-500 space-y-1 font-roboto">
+                <li>• Luxury Home Automation</li>
+                <li>• Energy Management (HVAC, Solar)</li>
+                <li>• AI-driven Security Systems</li>
+            </ul>
+        </div>
+
+        <!-- Holography Card -->
+        <div class="group rounded-2xl border border-lime-400/25 bg-slate-900/60 p-6 glow-lime transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.02]">
+            <div class="w-12 h-12 rounded-full bg-lime-400/20 flex items-center justify-center mb-4 group-hover:bg-lime-400/30 transition-colors duration-300">
+                <svg class="w-6 h-6 text-neon-lime" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-neon-lime font-jura">Holographic Solutions</h3>
+            <p class="text-slate-400 text-sm font-inter mb-4">Glasses-free 3D displays, holographic imaging technology, contactless interfaces for healthcare, and immersive retail experiences.</p>
+            <ul class="text-xs text-slate-500 space-y-1 font-roboto">
+                <li>• Glasses-free 3D Displays</li>
+                <li>• Contactless Healthcare ORs</li>
+                <li>• Immersive Retail Experiences</li>
+            </ul>
+        </div>
+
+        <!-- UAV Defence Card -->
+        <div class="group rounded-2xl border border-cyan-400/25 bg-slate-900/60 p-6 glow-cyan transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.02]">
+            <div class="w-12 h-12 rounded-full bg-cyan-400/20 flex items-center justify-center mb-4 group-hover:bg-cyan-400/30 transition-colors duration-300">
+                <svg class="w-6 h-6 text-neon-cyan" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-neon-cyan font-jura">UAV Defence</h3>
+            <p class="text-slate-400 text-sm font-inter mb-4">Advanced UAV detection and countermeasures, electromagnetic patrol systems, laser anti-UAV technology, and 2D/3D scanning radars.</p>
+            <ul class="text-xs text-slate-500 space-y-1 font-roboto">
+                <li>• UAV Detection & Recognition</li>
+                <li>• Electromagnetic Countermeasures</li>
+                <li>• Laser Anti-UAV Systems</li>
+            </ul>
+        </div>
+
+        <!-- Mobility Card -->
+        <div class="group rounded-2xl border border-fuchsia-400/25 bg-slate-900/60 p-6 glow-fuchsia transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.02]">
+            <div class="w-12 h-12 rounded-full bg-fuchsia-400/20 flex items-center justify-center mb-4 group-hover:bg-fuchsia-400/30 transition-colors duration-300">
+                <svg class="w-6 h-6 text-neon-fuchsia" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-neon-fuchsia font-jura">Mobility Solutions</h3>
+            <p class="text-slate-400 text-sm font-inter mb-4">E-mobility infrastructure, intelligent transportation systems, smart traffic management, and sustainable mobility platforms.</p>
+            <ul class="text-xs text-slate-500 space-y-1 font-roboto">
+                <li>• E-mobility Infrastructure</li>
+                <li>• Smart Traffic Management</li>
+                <li>• Sustainable Mobility Platforms</li>
+            </ul>
+        </div>
     </div>
 </section>
 
-<!-- CTA Section -->
-<section class="mx-auto max-w-5xl px-6 lg:px-8">
-    <div class="rounded-2xl border border-white/10 bg-gradient-to-r from-slate-900/70 to-slate-800/70 p-6 glow-soft">
-        <div class="grid md:grid-cols-3 gap-4 items-center">
-            <div class="md:col-span-2">
-                <h3 class="text-lg md:text-xl font-semibold font-jura">AI LEAD helps our customers find the right solutions.</h3>
-                <ul class="mt-2 text-sm text-slate-300 space-y-1 list-disc pl-5 font-roboto">
-                    <li>Innovation and pragmatic engineering that fits budget, schedule, and context.</li>
-                    <li>Partnered solutions with top-tier vendors and domain experts.</li>
-                    <li>Latest technologies applied responsibly for long-term value.</li>
-                </ul>
+<!-- Quick Links Section -->
+<section class="mx-auto max-w-5xl px-6 lg:px-8 py-12">
+    <div class="rounded-2xl border border-white/10 bg-gradient-to-r from-slate-900/70 to-slate-800/70 p-8 glow-soft">
+        <div class="text-center mb-8">
+            <h3 class="text-2xl font-bold font-jura mb-2">Ready to Get Started?</h3>
+            <p class="text-slate-400 font-inter">Explore our comprehensive solutions and discover how AI LEAD can transform your business</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="text-center">
+                <a href="/solutions" class="group block p-6 rounded-xl border border-cyan-400/20 hover:border-cyan-400/40 bg-slate-800/30 hover:bg-slate-800/50 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-full bg-cyan-400/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-cyan-400/30 transition-colors duration-300">
+                        <svg class="w-6 h-6 text-neon-cyan" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-bold mb-2 text-neon-cyan font-jura">Solutions</h4>
+                    <p class="text-sm text-slate-400 font-inter">Explore our comprehensive technology solutions across all domains</p>
+                </a>
             </div>
-            <div class="text-left md:text-right">
-                <a href="#contact" class="btn-neon glow-cyan rounded-xl px-4 py-2 transition-all duration-200">
-                    Contact AI LEAD
+            
+            <div class="text-center">
+                <a href="/industries" class="group block p-6 rounded-xl border border-fuchsia-400/20 hover:border-fuchsia-400/40 bg-slate-800/30 hover:bg-slate-800/50 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-full bg-fuchsia-400/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-fuchsia-400/30 transition-colors duration-300">
+                        <svg class="w-6 h-6 text-neon-fuchsia" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-bold mb-2 text-neon-fuchsia font-jura">Industries</h4>
+                    <p class="text-sm text-slate-400 font-inter">Discover how we transform key sectors with intelligent solutions</p>
+                </a>
+            </div>
+            
+            <div class="text-center">
+                <a href="#contact" class="group block p-6 rounded-xl border border-purple-400/20 hover:border-purple-400/40 bg-slate-800/30 hover:bg-slate-800/50 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-full bg-purple-400/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-400/30 transition-colors duration-300">
+                        <svg class="w-6 h-6 text-neon-purple" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-bold mb-2 text-neon-purple font-jura">Contact</h4>
+                    <p class="text-sm text-slate-400 font-inter">Get in touch to discuss your project requirements</p>
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- About Section -->
-<section class="mx-auto max-w-5xl px-6 lg:px-8 my-12">
-    <h2 class="text-xl md:text-2xl font-bold font-jura mb-6">AI LEAD – Partner with a Shared Vision</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <article class="rounded-2xl border border-cyan-400/20 bg-slate-900/60 p-6 glow-cyan">
-            <h3 class="font-semibold font-jura">Mission</h3>
-            <p class="mt-2 text-sm text-slate-300 font-roboto">Deliver superior services with excellence, transparency, and respect—earning long‑term trust and measurable performance.</p>
-        </article>
-        <article class="rounded-2xl border border-fuchsia-400/20 bg-slate-900/60 p-6 glow-fuchsia">
-            <h3 class="font-semibold font-jura">Values</h3>
-            <ul class="mt-2 text-sm text-slate-300 space-y-1 list-disc pl-5 font-roboto">
-                <li>Always maintain our ethics and respect.</li>
-                <li>Partnership and dialogue as the right way of working.</li>
-                <li>Continuous learning and improvement.</li>
-            </ul>
-        </article>
-        <article class="rounded-2xl border border-purple-400/20 bg-slate-900/60 p-6 glow-purple">
-            <h3 class="font-semibold font-jura">Goals</h3>
-            <ul class="mt-2 text-sm text-slate-300 space-y-1 list-disc pl-5 font-roboto">
-                <li>Listen to our customers and exceed expectations.</li>
-                <li>Deliver repeatable, high‑quality work.</li>
-                <li>Empower our people to do their best work.</li>
-            </ul>
-        </article>
-    </div>
-</section>
+
 {% endblock %}
