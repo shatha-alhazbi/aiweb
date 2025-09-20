@@ -6,6 +6,8 @@
     --fuchsia: 236,72,153;
     --purple: 168,85,247;
     --lime: 132,204,22;
+     --orange: 249,115,22;
+    --pink: 236,72,153;
 }
 
 /* Google Fonts import */
@@ -105,6 +107,193 @@ body {
 .group:hover .nav-link {
     background: linear-gradient(to right, rgba(var(--cyan), 0.22), rgba(var(--fuchsia), 0.22));
     box-shadow: 0 0 0 1px rgba(var(--cyan), .25), 0 0 14px rgba(var(--cyan), .25);
+}
+
+/* Compact mega menu styling */
+.mega-menu-compact {
+    min-width: 280px;
+    max-width: 320px;
+}
+
+/* Two-level mega menu system */
+.mega-menu-item {
+    position: relative;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.mega-menu-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.mega-menu-item.has-submenu::after {
+    content: '→';
+    position: absolute;
+    right: 1rem;
+    opacity: 0.6;
+    transition: all 0.2s ease;
+}
+
+.mega-menu-item.has-submenu:hover::after {
+    transform: translateX(2px);
+    opacity: 1;
+}
+
+/* Submenu that appears on hover */
+.mega-submenu {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    min-width: 250px;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: all 0.2s ease;
+    z-index: 100;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.mega-menu-item:hover .mega-submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.mega-submenu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+.mega-submenu-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(4px);
+}
+
+/* Color-coded hover effects for different sections */
+.mega-menu-item.smart-cities:hover {
+    background: linear-gradient(to right, rgba(var(--fuchsia), 0.1), rgba(var(--fuchsia), 0.05));
+    border-left: 3px solid rgb(var(--fuchsia));
+}
+
+.mega-menu-item.ai-ml:hover {
+    background: linear-gradient(to right, rgba(var(--cyan), 0.1), rgba(var(--cyan), 0.05));
+    border-left: 3px solid rgb(var(--cyan));
+}
+
+.mega-menu-item.iot-smart:hover {
+    background: linear-gradient(to right, rgba(var(--lime), 0.1), rgba(var(--lime), 0.05));
+    border-left: 3px solid rgb(var(--lime));
+}
+
+.mega-menu-item.enterprise:hover {
+    background: linear-gradient(to right, rgba(var(--purple), 0.1), rgba(var(--purple), 0.05));
+    border-left: 3px solid rgb(var(--purple));
+}
+
+.mega-menu-item.holography:hover {
+    background: linear-gradient(to right, rgba(var(--cyan), 0.1), rgba(var(--cyan), 0.05));
+    border-left: 3px solid rgb(var(--cyan));
+}
+
+.mega-menu-item.defence:hover {
+    background: linear-gradient(to right, rgba(var(--orange), 0.1), rgba(var(--orange), 0.05));
+    border-left: 3px solid rgb(var(--orange));
+}
+
+/* Orange and pink glow effects */
+.glow-orange {
+    box-shadow: 0 0 0 1px rgba(var(--orange), .22), 0 0 24px rgba(var(--orange), .35);
+}
+
+.glow-pink {
+    box-shadow: 0 0 0 1px rgba(var(--pink), .22), 0 0 24px rgba(var(--pink), .35);
+}
+
+/* Improved mobile menu for new items */
+.mobile-submenu-compact {
+    padding-left: 1rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Better header max-width */
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Services menu special compact styling */
+.services-menu-compact .mega-menu-item {
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 0.5rem;
+    border-radius: 0.75rem;
+}
+
+.services-menu-compact .mega-menu-item:hover {
+    border-color: rgba(var(--lime), 0.3);
+    background: rgba(var(--lime), 0.05);
+}
+
+/* Industry menu styling */
+.industry-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.industry-menu-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1023px) {
+    .mega-submenu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        margin-top: 0.5rem;
+        margin-left: 1rem;
+        border-left: 2px solid rgba(255, 255, 255, 0.2);
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        backdrop-filter: none;
+    }
+    
+    .mega-menu-item.has-submenu::after {
+        content: '↓';
+        transform: none;
+    }
+}
+
+/* Header brand improvements without breaking existing styles */
+.header-brand-enhanced {
+    transition: all 0.2s ease;
+}
+
+.header-brand-enhanced:hover {
+    transform: translateY(-1px);
 }
 
 /* Responsive Design - Following exact breakpoints */
