@@ -1,24 +1,29 @@
-/* tailwind-extensions.css - Only for styles Tailwind can't handle */
+/* static/css/style.css - Cleaned and organized */
 
-/* CSS Variables for neon colors - needed for rgba() usage */
+/* ===== CSS VARIABLES ===== */
 :root {
     --cyan: 34,211,238;
     --fuchsia: 236,72,153;
     --purple: 168,85,247;
     --lime: 132,204,22;
-     --orange: 249,115,22;
+    --orange: 249,115,22;
     --pink: 236,72,153;
 }
 
-/* Google Fonts import */
+/* ===== GOOGLE FONTS IMPORT ===== */
 @import url('https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
 
-/* Darker background matching original exactly */
+/* ===== GLOBAL STYLES ===== */
 body {
     background: linear-gradient(#0a0f1a, #0f172a) !important;
 }
 
-/* Glass effects - can't be done with pure Tailwind */
+/* ===== FONT UTILITY CLASSES ===== */
+.font-jura { font-family: 'Jura', sans-serif; }
+.font-roboto { font-family: 'Roboto', sans-serif; }
+.font-inter { font-family: 'Inter', sans-serif; }
+
+/* ===== GLASS EFFECTS ===== */
 .glass {
     backdrop-filter: blur(12px);
     background: linear-gradient(90deg, rgba(var(--cyan), .14), rgba(var(--fuchsia), .14), rgba(var(--lime), .14));
@@ -26,41 +31,22 @@ body {
     box-shadow: 0 0 18px rgba(var(--cyan), .28);
 }
 
-/* Header glass - darker like original */
 .glass-header {
     backdrop-filter: blur(12px);
     background: linear-gradient(90deg, rgba(2,6,23,.85), rgba(2,6,23,.8));
     border: 1px solid rgba(var(--cyan), .25);
 }
 
-/* Mega menu darker backgrounds */
-.mega-menu-bg {
-    background: rgba(0, 0, 0, 0.92);
-    backdrop-filter: blur(16px);
-}
+/* ===== GLOW EFFECTS ===== */
+.glow-cyan { box-shadow: 0 0 0 1px rgba(var(--cyan), .22), 0 0 24px rgba(var(--cyan), .35); }
+.glow-fuchsia { box-shadow: 0 0 0 1px rgba(var(--fuchsia), .22), 0 0 24px rgba(var(--fuchsia), .35); }
+.glow-purple { box-shadow: 0 0 0 1px rgba(var(--purple), .22), 0 0 24px rgba(var(--purple), .35); }
+.glow-lime { box-shadow: 0 0 0 1px rgba(var(--lime), .22), 0 0 24px rgba(var(--lime), .35); }
+.glow-orange { box-shadow: 0 0 0 1px rgba(var(--orange), .22), 0 0 24px rgba(var(--orange), .35); }
+.glow-pink { box-shadow: 0 0 0 1px rgba(var(--pink), .22), 0 0 24px rgba(var(--pink), .35); }
+.glow-soft { box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 0 28px rgba(15,23,42,.65), inset 0 0 20px rgba(15,23,42,.5); }
 
-/* Specific glow effects with CSS variables */
-.glow-cyan {
-    box-shadow: 0 0 0 1px rgba(var(--cyan), .22), 0 0 24px rgba(var(--cyan), .35);
-}
-
-.glow-fuchsia {
-    box-shadow: 0 0 0 1px rgba(var(--fuchsia), .22), 0 0 24px rgba(var(--fuchsia), .35);
-}
-
-.glow-purple {
-    box-shadow: 0 0 0 1px rgba(var(--purple), .22), 0 0 24px rgba(var(--purple), .35);
-}
-
-.glow-lime {
-    box-shadow: 0 0 0 1px rgba(var(--lime), .22), 0 0 24px rgba(var(--lime), .35);
-}
-
-.glow-soft {
-    box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 0 28px rgba(15,23,42,.65), inset 0 0 20px rgba(15,23,42,.5);
-}
-
-/* Neon buttons - complex gradients */
+/* ===== BUTTON STYLES ===== */
 .btn-neon {
     background-image: linear-gradient(90deg, rgba(var(--cyan),1), rgba(var(--fuchsia),1), rgba(var(--purple),1));
     color: #0a0a0a;
@@ -68,21 +54,16 @@ body {
     letter-spacing: .02em;
 }
 
-.btn-neon-ghost {
-    background: rgba(15,23,42,.6);
-    border: 1px solid rgba(255,255,255,.18);
-    color: #d1f1f9;
-}
-
-.btn-neon-ghost.glow {
-    box-shadow: 0 0 0 1px rgba(var(--cyan),.2), 0 0 24px rgba(var(--cyan),.25);
-}
-
-/* Hover effects */
 .btn-neon:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(var(--cyan),.6), 0 0 40px rgba(var(--fuchsia),.45);
     filter: brightness(1.05);
+}
+
+.btn-neon-ghost {
+    background: rgba(15,23,42,.6);
+    border: 1px solid rgba(255,255,255,.18);
+    color: #d1f1f9;
 }
 
 .btn-neon-ghost:hover {
@@ -92,6 +73,11 @@ body {
     filter: brightness(1.05);
 }
 
+.btn-neon-ghost.glow {
+    box-shadow: 0 0 0 1px rgba(var(--cyan),.2), 0 0 24px rgba(var(--cyan),.25);
+}
+
+/* ===== NAVIGATION STYLES ===== */
 .nav-link {
     position: relative;
     transition: all 0.2s ease;
@@ -103,19 +89,22 @@ body {
     box-shadow: 0 0 0 1px rgba(var(--cyan), .25), 0 0 14px rgba(var(--cyan), .25);
 }
 
-/* Group hover for mega menus */
 .group:hover .nav-link {
     background: linear-gradient(to right, rgba(var(--cyan), 0.22), rgba(var(--fuchsia), 0.22));
     box-shadow: 0 0 0 1px rgba(var(--cyan), .25), 0 0 14px rgba(var(--cyan), .25);
 }
 
-/* Compact mega menu styling */
+/* ===== MEGA MENU STYLES ===== */
+.mega-menu-bg {
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(16px);
+}
+
 .mega-menu-compact {
     min-width: 280px;
     max-width: 320px;
 }
 
-/* Two-level mega menu system */
 .mega-menu-item {
     position: relative;
     padding: 0.75rem 1rem;
@@ -141,7 +130,6 @@ body {
     opacity: 1;
 }
 
-/* Submenu that appears on hover */
 .mega-submenu {
     position: absolute;
     left: 100%;
@@ -183,7 +171,7 @@ body {
     transform: translateX(4px);
 }
 
-/* Color-coded hover effects for different sections */
+/* ===== COLOR-CODED HOVER EFFECTS ===== */
 .mega-menu-item.smart-cities:hover {
     background: linear-gradient(to right, rgba(var(--fuchsia), 0.1), rgba(var(--fuchsia), 0.05));
     border-left: 3px solid rgb(var(--fuchsia));
@@ -214,16 +202,7 @@ body {
     border-left: 3px solid rgb(var(--orange));
 }
 
-/* Orange and pink glow effects */
-.glow-orange {
-    box-shadow: 0 0 0 1px rgba(var(--orange), .22), 0 0 24px rgba(var(--orange), .35);
-}
-
-.glow-pink {
-    box-shadow: 0 0 0 1px rgba(var(--pink), .22), 0 0 24px rgba(var(--pink), .35);
-}
-
-/* Improved mobile menu for new items */
+/* ===== MOBILE STYLES ===== */
 .mobile-submenu-compact {
     padding-left: 1rem;
     border-left: 2px solid rgba(255, 255, 255, 0.1);
@@ -231,13 +210,20 @@ body {
     margin-top: 0.5rem;
 }
 
-/* Better header max-width */
+/* ===== SPECIAL COMPONENT STYLES ===== */
 .header-container {
     max-width: 1400px;
     margin: 0 auto;
 }
 
-/* Services menu special compact styling */
+.header-brand-enhanced {
+    transition: all 0.2s ease;
+}
+
+.header-brand-enhanced:hover {
+    transform: translateY(-1px);
+}
+
 .services-menu-compact .mega-menu-item {
     padding: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -250,7 +236,6 @@ body {
     background: rgba(var(--lime), 0.05);
 }
 
-/* Industry menu styling */
 .industry-menu-item {
     display: flex;
     align-items: center;
@@ -265,39 +250,11 @@ body {
     transform: translateX(4px);
 }
 
-/* Responsive adjustments */
-@media (max-width: 1023px) {
-    .mega-submenu {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        margin-top: 0.5rem;
-        margin-left: 1rem;
-        border-left: 2px solid rgba(255, 255, 255, 0.2);
-        background: transparent;
-        border: none;
-        box-shadow: none;
-        backdrop-filter: none;
-    }
-    
-    .mega-menu-item.has-submenu::after {
-        content: '↓';
-        transform: none;
-    }
+.hero-glow {
+    box-shadow: 0 0 0 2px rgba(var(--fuchsia), .4), 0 0 40px rgba(var(--cyan), .35), 0 0 80px rgba(var(--purple), .25);
 }
 
-/* Header brand improvements without breaking existing styles */
-.header-brand-enhanced {
-    transition: all 0.2s ease;
-}
-
-.header-brand-enhanced:hover {
-    transform: translateY(-1px);
-}
-
-/* Responsive Design - Following exact breakpoints */
-
+/* ===== RESPONSIVE DESIGN ===== */
 /* Mobile Phones: ≤ 767px */
 @media (max-width: 767px) {
     .hero-glow {
@@ -321,13 +278,11 @@ body {
         margin-top: 1rem;
     }
     
-    /* Stack feature bullets vertically on mobile */
     .hero-glow .grid.gap-3 {
         grid-template-columns: 1fr;
         gap: 0.75rem;
     }
     
-    /* Button adjustments */
     .hero-glow .btn-neon,
     .hero-glow .btn-neon-ghost {
         padding: 0.75rem 1.5rem;
@@ -341,19 +296,16 @@ body {
         gap: 1rem;
     }
     
-    /* Values section - single column */
     #values .grid {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
     
-    /* About section - single column */
     .about-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
     
-    /* CTA section adjustments */
     .cta-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -371,24 +323,20 @@ body {
         font-size: 18px;
     }
     
-    /* Values section - 2 columns */
     #values .grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
     
-    /* About section - adjust for tablets */
     .about-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
     
-    /* Mega menu width adjustment */
     .mega-menu {
         width: min(90vw, 48rem);
     }
     
-    /* Navigation - show desktop nav on tablets */
     .lg\:flex {
         display: flex !important;
     }
@@ -408,23 +356,42 @@ body {
         font-size: 20px;
     }
     
-    /* Values section - 4 columns */
     #values .grid {
         grid-template-columns: repeat(4, 1fr);
     }
     
-    /* About section - 3 columns */
     .about-grid {
         grid-template-columns: repeat(3, 1fr);
     }
     
-    /* Full mega menu width */
     .mega-menu {
         width: min(95vw, 52rem);
     }
 }
 
-/* Reduce motion for accessibility */
+/* Mobile menu responsive adjustments */
+@media (max-width: 1023px) {
+    .mega-submenu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        margin-top: 0.5rem;
+        margin-left: 1rem;
+        border-left: 2px solid rgba(255, 255, 255, 0.2);
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        backdrop-filter: none;
+    }
+    
+    .mega-menu-item.has-submenu::after {
+        content: '↓';
+        transform: none;
+    }
+}
+
+/* Accessibility - Reduce motion */
 @media (prefers-reduced-motion: reduce) {
     .btn-neon, 
     .btn-neon-ghost, 
@@ -442,13 +409,3 @@ body {
         transform: none;
     }
 }
-
-/* Hero container special styling */
-.hero-glow {
-    box-shadow: 0 0 0 2px rgba(var(--fuchsia), .4), 0 0 40px rgba(var(--cyan), .35), 0 0 80px rgba(var(--purple), .25);
-}
-
-/* Font utility classes */
-.font-jura { font-family: 'Jura', sans-serif; }
-.font-roboto { font-family: 'Roboto', sans-serif; }
-.font-inter { font-family: 'Inter', sans-serif; }

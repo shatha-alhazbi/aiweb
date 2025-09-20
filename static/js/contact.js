@@ -1,23 +1,34 @@
-/**
- * AI LEAD - Contact Page JavaScript
- * Handles form submissions and notifications
- */
-
+// ===== INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Contact page loaded - initializing features...');
     
-    // Initialize contact and career forms
     initializeContactForm();
     initializeCareerForm();
     
     console.log('Contact page initialization complete');
 });
 
-/**
- * Initialize Contact Form
- */
+// ===== FORM CONFIGURATIONS =====
+const FORM_CONFIG = {
+    contact: {
+        id: 'contact-form',
+        requiredFields: ['firstName', 'lastName', 'email', 'subject', 'message'],
+        emailSubject: 'Contact Form',
+        successMessage: 'Thank you! Your message has been prepared. Please send the email from your email client.',
+        buttonColor: 'cyan'
+    },
+    career: {
+        id: 'career-form',
+        requiredFields: ['firstName', 'lastName', 'email', 'phone'],
+        emailSubject: 'Career Application',
+        successMessage: 'Thank you for your application! Please attach your CV to the email that opens and send it.',
+        buttonColor: 'fuchsia'
+    }
+};
+
+// ===== CONTACT FORM HANDLING =====
 function initializeContactForm() {
-    const form = document.getElementById('contact-form');
+    const form = document.getElementById(FORM_CONFIG.contact.id);
     if (!form) {
         console.warn('Contact form not found');
         return;
@@ -27,75 +38,10 @@ function initializeContactForm() {
     
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        handleContactFormSubmission(form);
+        handleFormSubmission(form, FORM_CONFIG.contact, createContactEmailContent);
     });
 }
 
-/**
- * Handle Contact Form Submission
- */
-function handleContactFormSubmission(form) {
-    try {
-        // Get form data
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData);
-        
-        // Validate required fields
-        if (!validateContactForm(data)) {
-            return;
-        }
-        
-        // Create email content
-        const emailContent = createContactEmailContent(data);
-        
-        // Create mailto link
-        const subject = encodeURIComponent(`Contact Form: ${data.subject}`);
-        const body = encodeURIComponent(emailContent);
-        const mailtoLink = `mailto:info@ailead.tech?subject=${subject}&body=${body}`;
-        
-        // Open email client
-        window.location.href = mailtoLink;
-        
-        // Show success message
-        showSuccessMessage('Thank you! Your message has been prepared. Please send the email from your email client.');
-        
-        // Reset form
-        form.reset();
-        
-        console.log('Contact form submitted successfully');
-        
-    } catch (error) {
-        console.error('Error submitting contact form:', error);
-        showErrorMessage('An error occurred while preparing your message. Please try again.');
-    }
-}
-
-/**
- * Validate Contact Form
- */
-function validateContactForm(data) {
-    const requiredFields = ['firstName', 'lastName', 'email', 'subject', 'message'];
-    
-    for (const field of requiredFields) {
-        if (!data[field] || data[field].trim() === '') {
-            showErrorMessage(`Please fill in the ${field.replace(/([A-Z])/g, ' $1').toLowerCase()} field.`);
-            return false;
-        }
-    }
-    
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-        showErrorMessage('Please enter a valid email address.');
-        return false;
-    }
-    
-    return true;
-}
-
-/**
- * Create Contact Email Content
- */
 function createContactEmailContent(data) {
     return `
 Contact Form Submission - AI LEAD Website
@@ -115,11 +61,9 @@ Sent on: ${new Date().toLocaleString()}
     `.trim();
 }
 
-/**
- * Initialize Career Form
- */
+// ===== CAREER FORM HANDLING =====
 function initializeCareerForm() {
-    const form = document.getElementById('career-form');
+    const form = document.getElementById(FORM_CONFIG.career.id);
     if (!form) {
         console.warn('Career form not found');
         return;
@@ -133,35 +77,22 @@ function initializeCareerForm() {
     });
 }
 
-/**
- * Handle Career Form Submission
- */
 function handleCareerFormSubmission(form) {
     try {
-        // Get form data
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
         
-        // Validate required fields and file
         if (!validateCareerForm(formData, data)) {
             return;
         }
         
-        // Create email content
         const emailContent = createCareerEmailContent(data);
-        
-        // Create mailto link
-        const subject = encodeURIComponent(`Career Application: ${data.firstName} ${data.lastName}`);
+        const subject = encodeURIComponent(`${FORM_CONFIG.career.emailSubject}: ${data.firstName} ${data.lastName}`);
         const body = encodeURIComponent(emailContent);
         const mailtoLink = `mailto:info@ailead.tech?subject=${subject}&body=${body}`;
         
-        // Open email client
         window.location.href = mailtoLink;
-        
-        // Show success message
-        showSuccessMessage('Thank you for your application! Please attach your CV to the email that opens and send it.');
-        
-        // Reset form
+        showSuccessMessage(FORM_CONFIG.career.successMessage);
         form.reset();
         
         console.log('Career form submitted successfully');
@@ -172,56 +103,6 @@ function handleCareerFormSubmission(form) {
     }
 }
 
-/**
- * Validate Career Form
- */
-function validateCareerForm(formData, data) {
-    const requiredFields = ['firstName', 'lastName', 'email', 'phone'];
-    
-    // Check required text fields
-    for (const field of requiredFields) {
-        if (!data[field] || data[field].trim() === '') {
-            showErrorMessage(`Please fill in the ${field.replace(/([A-Z])/g, ' $1').toLowerCase()} field.`);
-            return false;
-        }
-    }
-    
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-        showErrorMessage('Please enter a valid email address.');
-        return false;
-    }
-    
-    // Check CV file
-    const cvFile = formData.get('cv');
-    if (!cvFile || cvFile.size === 0) {
-        showErrorMessage('Please upload your CV/Resume.');
-        return false;
-    }
-    
-    // Check file size (5MB limit)
-    if (cvFile.size > 5 * 1024 * 1024) {
-        showErrorMessage('CV file size must be less than 5MB.');
-        return false;
-    }
-    
-    // Check file type
-    const allowedTypes = ['.pdf', '.doc', '.docx'];
-    const fileName = cvFile.name.toLowerCase();
-    const isValidType = allowedTypes.some(type => fileName.endsWith(type));
-    
-    if (!isValidType) {
-        showErrorMessage('Please upload a PDF, DOC, or DOCX file.');
-        return false;
-    }
-    
-    return true;
-}
-
-/**
- * Create Career Email Content
- */
 function createCareerEmailContent(data) {
     return `
 Career Application - AI LEAD Website
@@ -243,35 +124,119 @@ Submitted on: ${new Date().toLocaleString()}
     `.trim();
 }
 
-/**
- * Show success message
- */
+// ===== GENERIC FORM HANDLING =====
+function handleFormSubmission(form, config, contentCreator) {
+    try {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+        
+        if (!validateForm(data, config.requiredFields)) {
+            return;
+        }
+        
+        const emailContent = contentCreator(data);
+        const subject = encodeURIComponent(`${config.emailSubject}: ${data.subject || data.firstName + ' ' + data.lastName}`);
+        const body = encodeURIComponent(emailContent);
+        const mailtoLink = `mailto:info@ailead.tech?subject=${subject}&body=${body}`;
+        
+        window.location.href = mailtoLink;
+        showSuccessMessage(config.successMessage);
+        form.reset();
+        
+        console.log(`${config.emailSubject} submitted successfully`);
+        
+    } catch (error) {
+        console.error(`Error submitting ${config.emailSubject.toLowerCase()}:`, error);
+        showErrorMessage('An error occurred while preparing your message. Please try again.');
+    }
+}
+
+// ===== VALIDATION FUNCTIONS =====
+function validateForm(data, requiredFields) {
+    for (const field of requiredFields) {
+        if (!data[field] || data[field].trim() === '') {
+            showErrorMessage(`Please fill in the ${formatFieldName(field)} field.`);
+            return false;
+        }
+    }
+    
+    if (data.email && !isValidEmail(data.email)) {
+        showErrorMessage('Please enter a valid email address.');
+        return false;
+    }
+    
+    return true;
+}
+
+function validateCareerForm(formData, data) {
+    if (!validateForm(data, FORM_CONFIG.career.requiredFields)) {
+        return false;
+    }
+    
+    const cvFile = formData.get('cv');
+    if (!cvFile || cvFile.size === 0) {
+        showErrorMessage('Please upload your CV/Resume.');
+        return false;
+    }
+    
+    if (cvFile.size > 5 * 1024 * 1024) {
+        showErrorMessage('CV file size must be less than 5MB.');
+        return false;
+    }
+    
+    const allowedTypes = ['.pdf', '.doc', '.docx'];
+    const fileName = cvFile.name.toLowerCase();
+    const isValidType = allowedTypes.some(type => fileName.endsWith(type));
+    
+    if (!isValidType) {
+        showErrorMessage('Please upload a PDF, DOC, or DOCX file.');
+        return false;
+    }
+    
+    return true;
+}
+
+// ===== UTILITY FUNCTIONS =====
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function formatFieldName(fieldName) {
+    return fieldName.replace(/([A-Z])/g, ' $1').toLowerCase();
+}
+
+function formatPhoneNumber(phone) {
+    const digits = phone.replace(/\D/g, '');
+    
+    if (digits.length === 10) {
+        return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+    } else if (digits.length === 11) {
+        return `+${digits.slice(0, 1)} (${digits.slice(1, 4)}) ${digits.slice(4, 7)}-${digits.slice(7)}`;
+    }
+    
+    return phone;
+}
+
+// ===== NOTIFICATION SYSTEM =====
 function showSuccessMessage(message) {
     const notification = createNotification(message, 'success');
     document.body.appendChild(notification);
     
-    // Auto-remove after 5 seconds
     setTimeout(() => {
         removeNotification(notification);
     }, 5000);
 }
 
-/**
- * Show error message
- */
 function showErrorMessage(message) {
     const notification = createNotification(message, 'error');
     document.body.appendChild(notification);
     
-    // Auto-remove after 5 seconds
     setTimeout(() => {
         removeNotification(notification);
     }, 5000);
 }
 
-/**
- * Create notification element
- */
 function createNotification(message, type) {
     const notification = document.createElement('div');
     const bgColor = type === 'success' ? 'bg-green-600' : 'bg-red-600';
@@ -298,9 +263,6 @@ function createNotification(message, type) {
     return notification;
 }
 
-/**
- * Remove notification with animation
- */
 function removeNotification(notification) {
     notification.classList.add('translate-x-full');
     setTimeout(() => {
@@ -308,40 +270,4 @@ function removeNotification(notification) {
             notification.remove();
         }
     }, 300);
-}
-
-/**
- * Utility function to format phone numbers
- */
-function formatPhoneNumber(phone) {
-    // Remove all non-digit characters
-    const digits = phone.replace(/\D/g, '');
-    
-    // Format based on length
-    if (digits.length === 10) {
-        return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
-    } else if (digits.length === 11) {
-        return `+${digits.slice(0, 1)} (${digits.slice(1, 4)}) ${digits.slice(4, 7)}-${digits.slice(7)}`;
-    }
-    
-    return phone; // Return original if no formatting rule applies
-}
-
-/**
- * Debounce function for performance optimization
- */
-function debounce(func, wait, immediate) {
-    let timeout;
-    return function executedFunction() {
-        const context = this;
-        const args = arguments;
-        const later = function() {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-        };
-        const callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-    };
 }
